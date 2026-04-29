@@ -21,7 +21,7 @@ const Register = () => {
     setSuccess(false)
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/v1/register/', {
+      await axios.post('BACKEND_URL/api/v1/register/', {
         username,
         email,
         password

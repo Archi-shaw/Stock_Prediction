@@ -1,6 +1,5 @@
 import { useState, createContext } from 'react'
 
-// Create the context
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {

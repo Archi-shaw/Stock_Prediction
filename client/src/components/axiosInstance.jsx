@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
 })
 
 
-// Request Interceptor
 axiosInstance.interceptors.request.use(
     function(config){
         const accessToken = localStorage.getItem('accessToken')
@@ -24,12 +23,10 @@ axiosInstance.interceptors.request.use(
     }
 )
 
-// Response Interceptor
 axiosInstance.interceptors.response.use(
     function(response){
         return response;
     },
-    // Handle failed responses
     async function(error){
         const originalRequest = error.config;
         if(error.response.status === 401 && !originalRequest.retry){
