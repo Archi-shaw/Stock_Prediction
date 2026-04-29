@@ -25,8 +25,8 @@ const Dashboard = () => {
     setError(null)
 
     try {
-      const response = await axiosInstance.post('/predict/', { ticker })
-      const backendRoot = import.meta.env.VITE_BACKEND_ROOT
+      const response = await axiosInstance.post('http://127.0.0.1:8000/api/v1/predict/', { ticker })
+      const backendRoot = 'http://127.0.0.1:8000/'
 
       setPlot(`${backendRoot}${response.data.plot_img}`)
       setMA100(`${backendRoot}${response.data.plot_100_dma}`)
@@ -81,9 +81,7 @@ const Dashboard = () => {
 
       {/* 📊 Results */}
       {prediction && (
-        <div className="mt-10 space-y-8">
-
-          {/* Charts Grid */}
+<div className="mt-10 sm:ml-32 flex flex-col justify-center items-center space-y-8">          
           <div className="grid md:grid-cols-2 gap-6">
             
             {plot && (

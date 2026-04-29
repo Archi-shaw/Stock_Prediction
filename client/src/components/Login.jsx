@@ -23,7 +23,7 @@ const Login = () => {
       const response = await axios.post(
         'http://127.0.0.1:8000/api/v1/token/',
         { username, password }
-      )
+      ) 
 
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
