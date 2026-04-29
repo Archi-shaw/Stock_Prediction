@@ -29,7 +29,6 @@ const Register = () => {
 
       setSuccess(true)
 
-      // optional: auto redirect after 2 sec
       setTimeout(() => navigate('/login'), 2000)
 
     } catch (error) {
@@ -54,7 +53,6 @@ const Register = () => {
 
         <form onSubmit={handleRegistration} className="space-y-4">
 
-          {/* Username */}
           <div>
             <input
               type="text"
@@ -69,7 +67,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Email */}
           <div>
             <input
               type="email"
@@ -84,7 +81,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Password */}
           <div>
             <input
               type="password"
@@ -99,14 +95,12 @@ const Register = () => {
             )}
           </div>
 
-          {/* Success Message */}
           {success && (
-            <p className="text-green-400 text-sm text-center">
+            <p className="text-green-400 w-full h-32  text-sm text-center">
               🎉 Registration successful! Redirecting to login...
             </p>
           )}
 
-          {/* Button */}
           <button
             type="submit"
             disabled={loading}
@@ -123,7 +117,6 @@ const Register = () => {
 
         </form>
 
-        {/* Footer */}
         <p className="text-gray-500 text-sm text-center mt-6">
           Already have an account?{" "}
           <span
