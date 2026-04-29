@@ -24,7 +24,7 @@ class StockPredictionAPIView(APIView):
             ticker = serializer.validated_data['ticker']
 
             now = datetime.now()
-            start = datetime(now.year-10, now.month, now.day)
+            start = datetime(now.year-5, now.month, now.day)
             end = now
             df = yf.download(ticker, start, end)
             if df.empty:
@@ -75,12 +75,13 @@ class StockPredictionAPIView(APIView):
             scaler = MinMaxScaler(feature_range=(0,1))
 
             # Load ML Model
-            model = load_model('stock_prediction_model.keras')
-
+            model_path = os.path.join(settings.BASE_DIR, 'stock_prediction_model.keras')
+            model = load_model(model_path)
             # Preparing Test Data
             past_100_days = data_training.tail(100)
             final_df = pd.concat([past_100_days, data_testing], ignore_index=True)
-            input_data = scaler.fit_transform(final_df)
+            scaler.fit(data_training)
+            input_data = scaler.transform(final_df)
 
             x_test = []
             y_test = []
