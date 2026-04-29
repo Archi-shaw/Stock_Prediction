@@ -20,8 +20,9 @@ const Login = () => {
     setError('')
 
     try {
+      const backendRoot = import.meta.env.BACKEND_URL;
       const response = await axios.post(
-        'BACKEND_URL/api/v1/token/',
+  `${backendRoot}/api/v1/token/`,
         { username, password }
       ) 
 

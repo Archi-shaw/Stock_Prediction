@@ -25,8 +25,9 @@ const Dashboard = () => {
     setError(null)
 
     try {
-      const response = await axiosInstance.post('BACKEND_URL/api/v1/predict/', { ticker })
-      const backendRoot = 'BACKEND_URL'
+     const backendRoot = import.meta.env.BACKEND_URL;
+
+       const response = await axiosInstance.post( `${backendRoot}/api/v1/predict/`, { ticker });
 
       setPlot(`${backendRoot}${response.data.plot_img}`)
       setMA100(`${backendRoot}${response.data.plot_100_dma}`)
